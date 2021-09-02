@@ -23,9 +23,8 @@ public class StudentService {
     public Optional<Student> create(StudentDtoInput request) {
         this.validateRequest(request);
 
-        Student student = studentMapper.mapFromStudentDtoInputToStudent(request);
-
-        Student savedStudent = studentRepository.save(student);
+        Student savedStudent = studentRepository.save(
+                studentMapper.mapFromStudentDtoInputToStudent(request));
 
         return Optional.of(savedStudent);
     }
