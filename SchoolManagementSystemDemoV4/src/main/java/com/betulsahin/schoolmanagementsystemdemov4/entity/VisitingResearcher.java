@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 @Data
 @NoArgsConstructor
 @Entity
-//@JsonTypeName("visitingResearcher")
 public class VisitingResearcher extends Instructor {
     private int monthlyWorkingHours;
     private double hourlyRate;

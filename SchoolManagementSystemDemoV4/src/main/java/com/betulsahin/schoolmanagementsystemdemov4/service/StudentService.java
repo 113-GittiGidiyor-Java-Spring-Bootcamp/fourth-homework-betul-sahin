@@ -1,7 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.service;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.StudentDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.StudentDtoOutput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.request.StudentDtoInput;
 import com.betulsahin.schoolmanagementsystemdemov4.entity.Student;
 import com.betulsahin.schoolmanagementsystemdemov4.mapper.StudentMapper;
 import com.betulsahin.schoolmanagementsystemdemov4.repository.StudentRepository;
@@ -26,8 +25,8 @@ public class StudentService {
 
         Student student = studentMapper.mapFromStudentDtoInputToStudent(request);
 
-        Student savedStudent = studentRepository.
-                save(student);
+        Student savedStudent = studentRepository.save(student);
+
         return Optional.of(savedStudent);
     }
 

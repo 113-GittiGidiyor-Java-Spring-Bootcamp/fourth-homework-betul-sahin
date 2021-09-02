@@ -15,16 +15,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-/*
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = PermanentInstructor.class, name = "permanentInstructor"),
-        @JsonSubTypes.Type(value = VisitingResearcher.class, name = "visitingResearcher")
-})
- */
 public class Instructor extends AbstractBaseEntity{
     private String name;
     private String address;

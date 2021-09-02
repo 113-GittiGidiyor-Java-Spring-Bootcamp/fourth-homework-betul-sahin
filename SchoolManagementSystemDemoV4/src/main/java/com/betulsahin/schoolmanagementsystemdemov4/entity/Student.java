@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Student extends AbstractBaseEntity {
@@ -25,6 +24,13 @@ public class Student extends AbstractBaseEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private Set<CourseRegistration> registrations = new HashSet<>();
+
+    public Student(String name, LocalDate birthdate, String address, String gender) {
+        this.name = name;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.gender = gender;
+    }
 }
 
 // TODO @JsonManagedReference test et

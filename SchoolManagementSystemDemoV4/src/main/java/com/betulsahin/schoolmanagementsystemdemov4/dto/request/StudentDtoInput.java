@@ -1,4 +1,4 @@
-package com.betulsahin.schoolmanagementsystemdemov4.dto;
+package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
 
 import com.betulsahin.schoolmanagementsystemdemov4.entity.enumeration.GenderType;
 import io.swagger.annotations.ApiModelProperty;

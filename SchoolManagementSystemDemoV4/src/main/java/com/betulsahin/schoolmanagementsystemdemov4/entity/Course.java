@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Course extends AbstractBaseEntity {
@@ -30,4 +29,10 @@ public class Course extends AbstractBaseEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private Set<CourseRegistration> registrations = new HashSet<>();
+
+    public Course(String name, String code, int creditScore) {
+        this.name = name;
+        this.code = code;
+        this.creditScore = creditScore;
+    }
 }

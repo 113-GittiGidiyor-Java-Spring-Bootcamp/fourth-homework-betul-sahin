@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class CourseRegistration extends AbstractBaseEntity{

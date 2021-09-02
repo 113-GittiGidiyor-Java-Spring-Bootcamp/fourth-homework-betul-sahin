@@ -1,7 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.controller;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.StudentDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.StudentDtoOutput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.request.StudentDtoInput;
 import com.betulsahin.schoolmanagementsystemdemov4.entity.Student;
 import com.betulsahin.schoolmanagementsystemdemov4.service.StudentService;
 import lombok.RequiredArgsConstructor;

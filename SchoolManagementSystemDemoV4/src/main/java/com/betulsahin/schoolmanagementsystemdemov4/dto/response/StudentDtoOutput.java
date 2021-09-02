@@ -1,4 +1,4 @@
-package com.betulsahin.schoolmanagementsystemdemov4.dto;
+package com.betulsahin.schoolmanagementsystemdemov4.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
