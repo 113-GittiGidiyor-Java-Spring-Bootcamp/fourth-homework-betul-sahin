@@ -2,6 +2,7 @@ package com.betulsahin.schoolmanagementsystemdemov4.service;
 
 import com.betulsahin.schoolmanagementsystemdemov4.dto.request.StudentDtoInput;
 import com.betulsahin.schoolmanagementsystemdemov4.entity.Student;
+import com.betulsahin.schoolmanagementsystemdemov4.exception.StudentNotFoundException;
 import com.betulsahin.schoolmanagementsystemdemov4.mapper.StudentMapper;
 import com.betulsahin.schoolmanagementsystemdemov4.repository.StudentRepository;
 import com.betulsahin.schoolmanagementsystemdemov4.util.StudentValidator;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+
+import static com.betulsahin.schoolmanagementsystemdemov4.util.ErrorMessageConstants.STUDENT_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -24,12 +27,18 @@ public class StudentService {
         this.validateRequest(request);
 
         Student savedStudent = studentRepository.save(
-                studentMapper.mapFromStudentDtoInputToStudent(request));
+                studentMapper.map(request));
 
         return Optional.of(savedStudent);
     }
 
     private void validateRequest(StudentDtoInput request) {
         StudentValidator.validateAge(request.getBirthdate());
+    }
+
+    @Transactional(readOnly = true)
+    public Student findById(long id){
+        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException(
+                        String.format(STUDENT_NOT_FOUND, id)));
     }
 }

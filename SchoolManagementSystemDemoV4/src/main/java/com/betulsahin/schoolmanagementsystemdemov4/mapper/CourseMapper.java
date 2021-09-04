@@ -7,7 +7,5 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface CourseMapper {
-    @Mapping(target = "instructor", ignore = true)
-    @Mapping(target = "registrations", ignore = true)
-    Course mapFromCourseDtoInputToCourse(CourseDtoInput courseDtoInput);
+    Course map(CourseDtoInput courseDtoInput);
 }

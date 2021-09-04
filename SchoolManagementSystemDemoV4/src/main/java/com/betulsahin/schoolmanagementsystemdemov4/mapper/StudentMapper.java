@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface StudentMapper {
 
-        Student mapFromStudentDtoInputToStudent(StudentDtoInput studentDto);
+        Student map(StudentDtoInput studentDtoInput);
 
     // public StudentDtoOutput mapToDto(Student student);
 }

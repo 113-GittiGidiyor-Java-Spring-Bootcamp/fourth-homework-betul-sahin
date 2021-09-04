@@ -6,6 +6,7 @@ import com.betulsahin.schoolmanagementsystemdemov4.entity.Instructor;
 import com.betulsahin.schoolmanagementsystemdemov4.service.InstructorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

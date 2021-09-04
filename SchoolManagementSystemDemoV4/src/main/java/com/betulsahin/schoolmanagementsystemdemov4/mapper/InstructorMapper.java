@@ -14,43 +14,33 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface InstructorMapper {
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "name", source = "name")
-    @Mapping(target = "address", source = "address")
-    @Mapping(target = "phoneNumber", source = "phoneNumber")
-    PermanentInstructor mapFromPermanentInstructorDtoInputToPermanentInstructor(PermanentInstructorDtoInput permanentInstructorDtoInput);
+    PermanentInstructor toPermanentInstructor(PermanentInstructorDtoInput permanentInstructorDtoInput);
 
-    VisitingResearcher mapFromVisitingResearcherDtoInputToVisitingResearcher(VisitingResearcherDtoInput VisitingResearcherDtoInput);
+    VisitingResearcher toVisitingResearcher(VisitingResearcherDtoInput VisitingResearcherDtoInput);
 
-    default Instructor mapFromInstructorDtoInputToInstructor(InstructorDtoInput dto){
-        if(dto instanceof PermanentInstructorDtoInput){
-            return mapFromPermanentInstructorDtoInputToPermanentInstructor((PermanentInstructorDtoInput)dto);
+    default Instructor map(InstructorDtoInput instructorDtoInput){
+        if(instructorDtoInput instanceof PermanentInstructorDtoInput){
+            return toPermanentInstructor((PermanentInstructorDtoInput)instructorDtoInput);
         }
-
-        return mapFromVisitingResearcherDtoInputToVisitingResearcher((VisitingResearcherDtoInput)dto);
+        else if(instructorDtoInput instanceof VisitingResearcherDtoInput){
+            return toVisitingResearcher((VisitingResearcherDtoInput)instructorDtoInput);
+        }
+        return null;
     }
 
-    @Mapping(target = "courses", ignore = true)
-    PermanentInstructorDtoOutput toDtoFromPermanentInstructor(PermanentInstructor permanentInstructor);
+    PermanentInstructorDtoOutput toPermanentInstructorDtoOutput(PermanentInstructor permanentInstructor);
 
-    @Mapping(target = "courses", ignore=true)
-    VisitingResearcherDtoOutput toDtoFromVisitingResearcher(VisitingResearcher visitingResearcher);
+    VisitingResearcherDtoOutput toVisitingResearcherDtoOutput(VisitingResearcher visitingResearcher);
 
-    @Mapping(target = "courses", ignore = true)
-    InstructorDtoOutput toDtoFromInstructor(Instructor instructor);
-
-    default InstructorDtoOutput map(Instructor instructor){
+    default InstructorDtoOutput mapToDto(Instructor instructor){
         if(instructor instanceof PermanentInstructor){
-            return toDtoFromPermanentInstructor(
+            return toPermanentInstructorDtoOutput(
                     (PermanentInstructor)instructor);
         }
         else if(instructor instanceof VisitingResearcher){
-            return toDtoFromVisitingResearcher(
+            return toVisitingResearcherDtoOutput(
                     (VisitingResearcher)instructor);
         }
-        return toDtoFromInstructor(instructor);
+        return null;
     }
 }
-
-
-// TODO : courses getirilecek

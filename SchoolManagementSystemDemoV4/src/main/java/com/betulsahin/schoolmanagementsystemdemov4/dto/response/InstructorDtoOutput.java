@@ -1,7 +1,5 @@
 package com.betulsahin.schoolmanagementsystemdemov4.dto.response;
 
-import com.betulsahin.schoolmanagementsystemdemov4.entity.PermanentInstructor;
-import com.betulsahin.schoolmanagementsystemdemov4.entity.VisitingResearcher;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
@@ -26,6 +24,4 @@ public class InstructorDtoOutput {
     private String name;
     private String address;
     private String phoneNumber;
-
-    private List<String> courses = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package com.betulsahin.schoolmanagementsystemdemov4.entity;
+package com.betulsahin.schoolmanagementsystemdemov4.entity.abtraction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

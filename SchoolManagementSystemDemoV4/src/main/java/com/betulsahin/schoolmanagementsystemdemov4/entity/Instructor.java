@@ -1,9 +1,7 @@
 package com.betulsahin.schoolmanagementsystemdemov4.entity;
 
+import com.betulsahin.schoolmanagementsystemdemov4.entity.abtraction.AbstractBaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Instructor extends AbstractBaseEntity{
+public class Instructor extends AbstractBaseEntity {
     private String name;
     private String address;
     private String phoneNumber;

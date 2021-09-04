@@ -3,6 +3,7 @@ package com.betulsahin.schoolmanagementsystemdemov4.service;
 import com.betulsahin.schoolmanagementsystemdemov4.dto.request.CourseDtoInput;
 import com.betulsahin.schoolmanagementsystemdemov4.entity.Course;
 import com.betulsahin.schoolmanagementsystemdemov4.exception.CourseIsAlreadyExistException;
+import com.betulsahin.schoolmanagementsystemdemov4.exception.CourseNotFoundException;
 import com.betulsahin.schoolmanagementsystemdemov4.mapper.CourseMapper;
 import com.betulsahin.schoolmanagementsystemdemov4.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import static com.betulsahin.schoolmanagementsystemdemov4.util.ErrorMessageConstants.COURSE_NOT_FOUND;
 import static com.betulsahin.schoolmanagementsystemdemov4.util.ErrorMessageConstants.FOUND_COURSE;
 
 @Service
@@ -30,8 +32,14 @@ public class CourseService {
         }
 
         Course savedCourse = courseRepository.save(
-                courseMapper.mapFromCourseDtoInputToCourse(request));
+                courseMapper.map(request));
 
         return Optional.of(savedCourse);
+    }
+
+    @Transactional(readOnly = true)
+    public Course findById(long id){
+        return courseRepository.findById(id).orElseThrow(() -> new CourseNotFoundException(
+                String.format(COURSE_NOT_FOUND, id)));
     }
 }

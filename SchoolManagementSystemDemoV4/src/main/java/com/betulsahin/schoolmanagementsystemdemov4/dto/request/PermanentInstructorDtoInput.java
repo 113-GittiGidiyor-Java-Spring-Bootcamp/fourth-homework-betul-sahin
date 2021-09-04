@@ -16,7 +16,7 @@ import javax.validation.constraints.NotEmpty;
 public class PermanentInstructorDtoInput extends InstructorDtoInput{
 
     @NotEmpty
-    @ApiModelProperty(example = "12500.0")
+   // @ApiModelProperty(example = "12500.0")
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private double salary;
 }

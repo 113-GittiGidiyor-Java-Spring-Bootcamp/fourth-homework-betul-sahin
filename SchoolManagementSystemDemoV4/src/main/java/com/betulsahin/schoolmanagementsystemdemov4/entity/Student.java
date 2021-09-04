@@ -1,8 +1,7 @@
 package com.betulsahin.schoolmanagementsystemdemov4.entity;
 
-import com.betulsahin.schoolmanagementsystemdemov4.entity.enumeration.GenderType;
+import com.betulsahin.schoolmanagementsystemdemov4.entity.abtraction.AbstractBaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

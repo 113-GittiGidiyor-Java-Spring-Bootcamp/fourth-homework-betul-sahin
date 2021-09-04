@@ -16,12 +16,12 @@ import javax.validation.constraints.NotEmpty;
 public class VisitingResearcherDtoInput extends InstructorDtoInput{
 
     @NotEmpty
-    @ApiModelProperty(example = "80")
+   // @ApiModelProperty(example = "80")
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private int monthlyWorkingHours;
 
     @NotEmpty
-    @ApiModelProperty(example = "250.0")
+   // @ApiModelProperty(example = "250.0")
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private double hourlyRate;
 }

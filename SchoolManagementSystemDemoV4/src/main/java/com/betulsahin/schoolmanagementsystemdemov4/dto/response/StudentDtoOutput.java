@@ -13,11 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentDtoOutput{
-    private long id;
     private String name;
     private LocalDate birthdate;
     private String address;
     private String gender;
-
-    private List<String> courses = new ArrayList<>();
 }

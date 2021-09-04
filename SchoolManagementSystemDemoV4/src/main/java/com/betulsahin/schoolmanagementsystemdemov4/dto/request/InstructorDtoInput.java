@@ -1,7 +1,5 @@
 package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
 
-import com.betulsahin.schoolmanagementsystemdemov4.entity.PermanentInstructor;
-import com.betulsahin.schoolmanagementsystemdemov4.entity.VisitingResearcher;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,18 +23,19 @@ import javax.validation.constraints.Size;
         @JsonSubTypes.Type(value = VisitingResearcherDtoInput.class, name = "visitingResearcherDtoInput")
 })
 public class InstructorDtoInput {
+    private long id;
 
-    @ApiModelProperty(example = "Aybike Güliz Enzel Yağmur Eflinnisa Nebioğulları")
+    //@ApiModelProperty(example = "Aybike Güliz Enzel Yağmur Eflinnisa Nebioğulları")
     @NotEmpty
-    @Size(max=50, message = "Your name cannot be greater than 50 characters")
+    @Size(max = 50, message = "Your name cannot be greater than 50 characters")
     private String name;
 
     @NotEmpty
-    @Size(max=250, message = "Your address cannot be greater than 250 characters")
+    @Size(max = 250, message = "Your address cannot be greater than 250 characters")
     private String address;
 
     @NotEmpty
-    @ApiModelProperty(example = "05551234466")
+    //@ApiModelProperty(example = "05551234466")
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String phoneNumber;
 }

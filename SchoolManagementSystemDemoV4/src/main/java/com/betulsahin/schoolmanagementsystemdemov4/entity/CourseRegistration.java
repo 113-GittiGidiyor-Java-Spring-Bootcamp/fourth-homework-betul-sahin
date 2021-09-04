@@ -1,7 +1,7 @@
 package com.betulsahin.schoolmanagementsystemdemov4.entity;
 
+import com.betulsahin.schoolmanagementsystemdemov4.entity.abtraction.AbstractBaseEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,10 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+/**
+ * Bu sinif kendi id si olan bagimsiz bir kayit sinifi. (join sinifi degil)
+ * Bu sinifi ayrıca oluşturmamın sebebi, öğrencilerin kursa
+ * ne zaman kaydolduğunu tutmak istiyorum.
+ */
 @Data
 @NoArgsConstructor
 @Entity
-public class CourseRegistration extends AbstractBaseEntity{
+public class CourseRegistration extends AbstractBaseEntity {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

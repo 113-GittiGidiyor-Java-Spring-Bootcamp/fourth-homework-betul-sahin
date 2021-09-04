@@ -34,7 +34,7 @@ public class InstructorService {
         }
 
         Instructor savedInstructor = instructorRepository.save(
-                instructorMapper.mapFromInstructorDtoInputToInstructor(request));
+                instructorMapper.map(request));
 
         return Optional.of(savedInstructor);
     }
@@ -43,7 +43,7 @@ public class InstructorService {
     public List<InstructorDtoOutput> findAll() {
         return instructorRepository.findAll()
                 .stream()
-                .map(instructorMapper::map)
+                .map(instructorMapper::mapToDto)
                 .collect(Collectors.toList());
     }
 }
