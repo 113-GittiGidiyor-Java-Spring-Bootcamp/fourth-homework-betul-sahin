@@ -5,6 +5,7 @@ import com.betulsahin.schoolmanagementsystemdemov4.entity.Course;
 import com.betulsahin.schoolmanagementsystemdemov4.entity.CourseRegistration;
 import com.betulsahin.schoolmanagementsystemdemov4.entity.Student;
 import com.betulsahin.schoolmanagementsystemdemov4.exception.CourseNotFoundException;
+import com.betulsahin.schoolmanagementsystemdemov4.exception.StudentIsAlreadyRegisteredThisCourseExistException;
 import com.betulsahin.schoolmanagementsystemdemov4.exception.StudentNotFoundException;
 import com.betulsahin.schoolmanagementsystemdemov4.exception.StudentNumberForOneCourseExceededException;
 import com.betulsahin.schoolmanagementsystemdemov4.mapper.CourseRegistrationMapper;
@@ -22,11 +23,20 @@ import static com.betulsahin.schoolmanagementsystemdemov4.util.ErrorMessageConst
 @RequiredArgsConstructor
 public class CourseRegistrationService {
     private final CourseRegistrationRepository courseRegistrationRepository;
-    private final StudentRepository studentRepository;
-    private final CourseRepository courseRepository;
     private final CourseRegistrationMapper courseRegistrationMapper;
 
     public Optional<CourseRegistration> create(CourseRegistrationDtoInput request){
+        // Ogrenci bu kursa daha önce kayit olmus mu ?
+        boolean registrationExist = courseRegistrationRepository.findByStudentIdAndCourseId(
+                request.getStudentId(), request.getCourseId()).
+                isPresent();
+
+        if(registrationExist){
+            throw new StudentIsAlreadyRegisteredThisCourseExistException(
+                    String.format(FOUND_REGISTERED_STUDENT, request.getStudentId()));
+        }
+
+        // Bu kursa kayit olan ogrenci sayisi 20'den fazla mi ?
         int studentCountOfRegistered = courseRegistrationRepository.
                 findStudentCountByCourse(request.getCourseId());
 
