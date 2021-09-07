@@ -1,6 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.mappers;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.CourseRegistrationDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.CourseRegistrationDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.CourseRegistration;
 import com.betulsahin.schoolmanagementsystemdemov4.services.CourseService;
 import com.betulsahin.schoolmanagementsystemdemov4.services.StudentService;
@@ -18,5 +18,5 @@ public abstract class CourseRegistrationMapper {
 
     @Mapping(target = "student", expression = "java(studentService.findById(courseRegistrationDtoInput.getStudentId()))")
     @Mapping(target = "course", expression = "java(courseService.findById(courseRegistrationDtoInput.getCourseId()))")
-    public abstract CourseRegistration map(CourseRegistrationDtoInput courseRegistrationDtoInput);
+    public abstract CourseRegistration map(CourseRegistrationDto courseRegistrationDtoInput);
 }

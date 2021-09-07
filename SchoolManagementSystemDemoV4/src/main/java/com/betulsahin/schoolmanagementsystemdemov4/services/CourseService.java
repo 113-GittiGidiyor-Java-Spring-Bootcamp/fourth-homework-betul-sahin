@@ -1,6 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.services;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.CourseDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.CourseDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Course;
 import com.betulsahin.schoolmanagementsystemdemov4.exceptions.CourseIsAlreadyExistException;
 import com.betulsahin.schoolmanagementsystemdemov4.exceptions.CourseNotFoundException;
@@ -22,7 +22,7 @@ public class CourseService {
     private final CourseMapper courseMapper;
 
     @Transactional
-    public Optional<Course> create(CourseDtoInput request) {
+    public Optional<Course> create(CourseDto request) {
         boolean courseExist = courseRepository.findByCode(request.getCode()).
                 isPresent();
 

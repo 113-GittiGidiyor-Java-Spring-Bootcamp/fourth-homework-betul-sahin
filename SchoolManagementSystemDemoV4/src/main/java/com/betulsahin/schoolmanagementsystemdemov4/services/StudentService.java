@@ -1,6 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.services;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.StudentDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.StudentDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Student;
 import com.betulsahin.schoolmanagementsystemdemov4.exceptions.StudentNotFoundException;
 import com.betulsahin.schoolmanagementsystemdemov4.mappers.StudentMapper;
@@ -23,7 +23,7 @@ public class StudentService {
     private final LogService logService;
 
     @Transactional
-    public Optional<Student> create(StudentDtoInput request) {
+    public Optional<Student> create(StudentDto request) {
         this.validateRequest(request);
 
         Student savedStudent = studentRepository.save(
@@ -32,7 +32,7 @@ public class StudentService {
         return Optional.of(savedStudent);
     }
 
-    private void validateRequest(StudentDtoInput request) {
+    private void validateRequest(StudentDto request) {
         StudentValidator.validateAge(request.getBirthdate());
     }
 

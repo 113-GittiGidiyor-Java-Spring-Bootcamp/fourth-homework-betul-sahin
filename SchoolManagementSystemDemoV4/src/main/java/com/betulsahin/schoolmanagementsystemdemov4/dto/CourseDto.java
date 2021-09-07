@@ -1,4 +1,4 @@
-package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
+package com.betulsahin.schoolmanagementsystemdemov4.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CourseDtoInput {
+public class CourseDto {
     @NotEmpty
     @Size(max=50, message = "Course name cannot be greater than 50")
     private String name;

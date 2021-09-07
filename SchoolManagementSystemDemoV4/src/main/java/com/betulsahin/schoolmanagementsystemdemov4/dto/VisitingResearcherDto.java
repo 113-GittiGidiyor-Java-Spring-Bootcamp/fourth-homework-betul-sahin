@@ -1,7 +1,6 @@
-package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
+package com.betulsahin.schoolmanagementsystemdemov4.dto;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonTypeName("visitingResearcherDtoInput")
-public class VisitingResearcherDtoInput extends InstructorDtoInput{
+public class VisitingResearcherDto extends InstructorDto {
 
     @NotEmpty
    // @ApiModelProperty(example = "80")

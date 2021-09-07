@@ -1,4 +1,4 @@
-package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
+package com.betulsahin.schoolmanagementsystemdemov4.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDtoInput {
+public class StudentDto {
     private long id;
 
     @ApiModelProperty(example = "Aybike Güliz Enzel Yağmur Eflinnisa Nebioğulları")

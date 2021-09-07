@@ -1,7 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.services;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.InstructorDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.response.InstructorDtoOutput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.InstructorDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Instructor;
 import com.betulsahin.schoolmanagementsystemdemov4.exceptions.InstructorIsAlreadyExistException;
 import com.betulsahin.schoolmanagementsystemdemov4.mappers.InstructorMapper;
@@ -23,7 +22,7 @@ public class InstructorService {
     private final InstructorMapper instructorMapper;
 
     @Transactional
-    public Optional<Instructor> create(InstructorDtoInput request) {
+    public Optional<Instructor> create(InstructorDto request) {
         boolean instructorExist = instructorRepository.
                 findByPhoneNumber(request.getPhoneNumber()).
                 isPresent();
@@ -40,7 +39,7 @@ public class InstructorService {
     }
 
     @Transactional(readOnly = true)
-    public List<InstructorDtoOutput> findAll() {
+    public List<InstructorDto> findAll() {
         return instructorRepository.findAll()
                 .stream()
                 .map(instructorMapper::mapToDto)

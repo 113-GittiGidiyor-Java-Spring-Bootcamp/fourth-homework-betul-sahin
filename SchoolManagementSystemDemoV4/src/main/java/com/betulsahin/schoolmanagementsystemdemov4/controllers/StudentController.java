@@ -1,6 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.controllers;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.StudentDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.StudentDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Student;
 import com.betulsahin.schoolmanagementsystemdemov4.services.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,8 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody StudentDtoInput studentDtoInput) {
-        Optional<Student> studentOptional = studentService.create(studentDtoInput);
+    public ResponseEntity<Student> createStudent(@RequestBody StudentDto studentDto) {
+        Optional<Student> studentOptional = studentService.create(studentDto);
 
         if(studentOptional.isPresent()){
             return new ResponseEntity<>(studentOptional.get(), HttpStatus.CREATED);

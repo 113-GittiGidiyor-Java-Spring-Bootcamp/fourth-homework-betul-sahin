@@ -1,7 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.services;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.LogDto;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.CourseRegistrationDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.CourseRegistrationDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.CourseRegistration;
 import com.betulsahin.schoolmanagementsystemdemov4.exceptions.StudentIsAlreadyRegisteredThisCourseExistException;
 import com.betulsahin.schoolmanagementsystemdemov4.exceptions.StudentNumberForOneCourseExceededException;
@@ -10,7 +9,6 @@ import com.betulsahin.schoolmanagementsystemdemov4.repositories.CourseRegistrati
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.Optional;
 
 import static com.betulsahin.schoolmanagementsystemdemov4.utils.ErrorMessageConstants.*;
@@ -21,7 +19,7 @@ public class CourseRegistrationService {
     private final CourseRegistrationRepository courseRegistrationRepository;
     private final CourseRegistrationMapper courseRegistrationMapper;
 
-    public Optional<CourseRegistration> create(CourseRegistrationDtoInput request){
+    public Optional<CourseRegistration> create(CourseRegistrationDto request){
         // Ogrenci bu kursa daha önce kayit olmus mu ?
         boolean registrationExist = courseRegistrationRepository.findByStudentIdAndCourseId(
                 request.getStudentId(), request.getCourseId()).

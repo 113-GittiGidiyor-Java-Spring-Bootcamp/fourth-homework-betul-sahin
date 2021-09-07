@@ -1,6 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.controllers;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.CourseRegistrationDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.CourseRegistrationDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.CourseRegistration;
 import com.betulsahin.schoolmanagementsystemdemov4.services.CourseRegistrationService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class CourseRegistrationController {
     private final CourseRegistrationService courseRegistrationService;
 
     @PostMapping
-    public ResponseEntity<CourseRegistration> create(@RequestBody CourseRegistrationDtoInput request) {
+    public ResponseEntity<CourseRegistration> create(@RequestBody CourseRegistrationDto request) {
         Optional<CourseRegistration> courseRegistrationOptional = courseRegistrationService.create(request);
 
         if (courseRegistrationOptional.isPresent()) {

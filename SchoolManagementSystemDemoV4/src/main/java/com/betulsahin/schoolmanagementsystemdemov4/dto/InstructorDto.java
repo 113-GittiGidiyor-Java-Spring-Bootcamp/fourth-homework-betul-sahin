@@ -1,8 +1,7 @@
-package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
+package com.betulsahin.schoolmanagementsystemdemov4.dto;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +18,10 @@ import javax.validation.constraints.Size;
         include = JsonTypeInfo.As.PROPERTY,
         property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = PermanentInstructorDtoInput.class, name = "permanentInstructorDtoInput"),
-        @JsonSubTypes.Type(value = VisitingResearcherDtoInput.class, name = "visitingResearcherDtoInput")
+        @JsonSubTypes.Type(value = PermanentInstructorDto.class, name = "permanentInstructorDto"),
+        @JsonSubTypes.Type(value = VisitingResearcherDto.class, name = "visitingResearcherDto")
 })
-public class InstructorDtoInput {
+public class InstructorDto {
     private long id;
 
     //@ApiModelProperty(example = "Aybike Güliz Enzel Yağmur Eflinnisa Nebioğulları")

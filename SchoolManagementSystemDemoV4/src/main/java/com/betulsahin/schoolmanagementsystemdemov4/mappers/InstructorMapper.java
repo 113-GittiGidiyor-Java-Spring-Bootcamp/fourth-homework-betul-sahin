@@ -1,11 +1,8 @@
 package com.betulsahin.schoolmanagementsystemdemov4.mappers;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.InstructorDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.PermanentInstructorDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.VisitingResearcherDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.response.InstructorDtoOutput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.response.PermanentInstructorDtoOutput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.response.VisitingResearcherDtoOutput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.InstructorDto;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.PermanentInstructorDto;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.VisitingResearcherDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Instructor;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.PermanentInstructor;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.VisitingResearcher;
@@ -13,31 +10,31 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface InstructorMapper {
-    PermanentInstructor toPermanentInstructor(PermanentInstructorDtoInput permanentInstructorDtoInput);
+    PermanentInstructor toPermanentInstructor(PermanentInstructorDto permanentInstructorDto);
 
-    VisitingResearcher toVisitingResearcher(VisitingResearcherDtoInput VisitingResearcherDtoInput);
+    VisitingResearcher toVisitingResearcher(VisitingResearcherDto VisitingResearcherDto);
 
-    default Instructor map(InstructorDtoInput instructorDtoInput){
-        if(instructorDtoInput instanceof PermanentInstructorDtoInput){
-            return toPermanentInstructor((PermanentInstructorDtoInput)instructorDtoInput);
+    default Instructor map(InstructorDto instructorDto){
+        if(instructorDto instanceof PermanentInstructorDto){
+            return toPermanentInstructor((PermanentInstructorDto)instructorDto);
         }
-        else if(instructorDtoInput instanceof VisitingResearcherDtoInput){
-            return toVisitingResearcher((VisitingResearcherDtoInput)instructorDtoInput);
+        else if(instructorDto instanceof VisitingResearcherDto){
+            return toVisitingResearcher((VisitingResearcherDto)instructorDto);
         }
         return null;
     }
 
-    PermanentInstructorDtoOutput toPermanentInstructorDtoOutput(PermanentInstructor permanentInstructor);
+    PermanentInstructorDto toPermanentInstructorDto(PermanentInstructor permanentInstructor);
 
-    VisitingResearcherDtoOutput toVisitingResearcherDtoOutput(VisitingResearcher visitingResearcher);
+    VisitingResearcherDto toVisitingResearcherDto(VisitingResearcher visitingResearcher);
 
-    default InstructorDtoOutput mapToDto(Instructor instructor){
+    default InstructorDto mapToDto(Instructor instructor){
         if(instructor instanceof PermanentInstructor){
-            return toPermanentInstructorDtoOutput(
+            return toPermanentInstructorDto(
                     (PermanentInstructor)instructor);
         }
         else if(instructor instanceof VisitingResearcher){
-            return toVisitingResearcherDtoOutput(
+            return toVisitingResearcherDto(
                     (VisitingResearcher)instructor);
         }
         return null;

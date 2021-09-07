@@ -1,6 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.controllers;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.CourseDtoInput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.CourseDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Course;
 import com.betulsahin.schoolmanagementsystemdemov4.services.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class CourseController {
     private final CourseService courseService;
 
     @PostMapping
-    public ResponseEntity<Course> create(@RequestBody CourseDtoInput request){
+    public ResponseEntity<Course> create(@RequestBody CourseDto request){
         Optional<Course> courseOptional = courseService.create(request);
 
         if(courseOptional.isPresent()){

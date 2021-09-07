@@ -1,7 +1,6 @@
 package com.betulsahin.schoolmanagementsystemdemov4.controllers;
 
-import com.betulsahin.schoolmanagementsystemdemov4.dto.request.InstructorDtoInput;
-import com.betulsahin.schoolmanagementsystemdemov4.dto.response.InstructorDtoOutput;
+import com.betulsahin.schoolmanagementsystemdemov4.dto.InstructorDto;
 import com.betulsahin.schoolmanagementsystemdemov4.entities.Instructor;
 import com.betulsahin.schoolmanagementsystemdemov4.services.InstructorService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,7 @@ public class InstructorController {
     private final InstructorService instructorService;
 
     @PostMapping
-    public ResponseEntity<Instructor> create(@RequestBody InstructorDtoInput request){
+    public ResponseEntity<Instructor> create(@RequestBody InstructorDto request){
         Optional<Instructor> instructorOptional = instructorService.create(request);
 
         if(instructorOptional.isPresent()){
@@ -30,10 +29,10 @@ public class InstructorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<InstructorDtoOutput>> getAll(){
-        final List<InstructorDtoOutput> instructors = instructorService.findAll();
+    public ResponseEntity<List<InstructorDto>> getAll(){
+        final List<InstructorDto> instructors = instructorService.findAll();
 
-        return new ResponseEntity<List<InstructorDtoOutput>>(
+        return new ResponseEntity<List<InstructorDto>>(
                 instructors,
                 HttpStatus.OK
         );
