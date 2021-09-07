@@ -22,6 +22,12 @@ public class StudentService {
     private final StudentMapper studentMapper;
     private final LogService logService;
 
+    /**
+     * creates a student to database.
+     *
+     * @param request the request object of student
+     * @return saved student as optional
+     */
     @Transactional
     public Optional<Student> create(StudentDto request) {
         this.validateRequest(request);
@@ -32,10 +38,21 @@ public class StudentService {
         return Optional.of(savedStudent);
     }
 
+    /**
+     * validates given request.
+     *
+     * @param request the request object of student
+     */
     private void validateRequest(StudentDto request) {
         StudentValidator.validateAge(request.getBirthdate());
     }
 
+    /**
+     * gets student object by id.
+     *
+     * @param id the identity of student
+     * @return the found student object
+     */
     @Transactional(readOnly = true)
     public Student findById(long id){
         Optional<Student> studentOptional = studentRepository.findById(id);

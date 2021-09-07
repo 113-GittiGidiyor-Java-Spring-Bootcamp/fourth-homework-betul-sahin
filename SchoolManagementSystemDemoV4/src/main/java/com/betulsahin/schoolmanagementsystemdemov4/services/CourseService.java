@@ -21,6 +21,12 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final CourseMapper courseMapper;
 
+    /**
+     * creates a course to database.
+     *
+     * @param request the request object of course
+     * @return saved course object as Optional
+     */
     @Transactional
     public Optional<Course> create(CourseDto request) {
         boolean courseExist = courseRepository.findByCode(request.getCode()).
@@ -37,6 +43,12 @@ public class CourseService {
         return Optional.of(savedCourse);
     }
 
+    /**
+     * finds course object by id.
+     *
+     * @param id the identity of the course
+     * @return the found course
+     */
     @Transactional(readOnly = true)
     public Course findById(long id){
         return courseRepository.findById(id).orElseThrow(() -> new CourseNotFoundException(

@@ -19,6 +19,12 @@ public class CourseRegistrationService {
     private final CourseRegistrationRepository courseRegistrationRepository;
     private final CourseRegistrationMapper courseRegistrationMapper;
 
+    /**
+     * Creates a course registration for a student.
+     *
+     * @param request the request object of CourseRegistration
+     * @return saved CourseRegistration object as Optional
+     */
     public Optional<CourseRegistration> create(CourseRegistrationDto request){
         // Ogrenci bu kursa daha önce kayit olmus mu ?
         boolean registrationExist = courseRegistrationRepository.findByStudentIdAndCourseId(

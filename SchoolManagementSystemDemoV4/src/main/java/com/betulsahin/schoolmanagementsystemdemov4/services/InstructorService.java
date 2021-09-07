@@ -21,6 +21,12 @@ public class InstructorService {
     private final InstructorRepository instructorRepository;
     private final InstructorMapper instructorMapper;
 
+    /**
+     * creates an instructor to database.
+     *
+     * @param request the request object of instructor
+     * @return saved instructor as optional
+     */
     @Transactional
     public Optional<Instructor> create(InstructorDto request) {
         boolean instructorExist = instructorRepository.
@@ -38,6 +44,11 @@ public class InstructorService {
         return Optional.of(savedInstructor);
     }
 
+    /**
+     * gets all instructor from database.
+     *
+     * @return a list of instructor
+     */
     @Transactional(readOnly = true)
     public List<InstructorDto> findAll() {
         return instructorRepository.findAll()
