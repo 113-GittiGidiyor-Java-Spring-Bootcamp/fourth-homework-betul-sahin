@@ -1,13 +1,10 @@
 package com.betulsahin.schoolmanagementsystemdemov4.dto.request;
 
-import com.betulsahin.schoolmanagementsystemdemov4.entity.enumeration.GenderType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
